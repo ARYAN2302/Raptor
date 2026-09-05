@@ -1,0 +1,312 @@
+[
+  {
+    "IQ_window": "/Users/adarshthakur/Desktop/A2G_Channel_Measurements/2023-12-15_16_42/Channel_Sounder_1702676586.909817.sigmf-data",
+    "timestamp": 1702676586.909817,
+    "receiver_position": {
+      "latitude": 35.72736740112305,
+      "longitude": -78.69623565673828,
+      "altitude": -0.44600000977516174
+    },
+    "transmitter_position": {
+      "latitude": 35.72747884,
+      "longitude": -78.69591754,
+      "altitude": 12
+    },
+    "range": 33.70654367042394,
+    "azimuth": 66.75106733341644,
+    "elevation": 21.6689713044571,
+    "radial_velocity": 0.0073848705728082375,
+    "velocity_xyz": [
+      0.0,
+      0.0,
+      0.02
+    ],
+    "dataset_id": "19",
+    "flight_id": "2023-12-15_16_42",
+    "valid_masks": {
+      "range": true,
+      "azimuth": false,
+      "elevation": false,
+      "velocity": true
+    }
+  },
+  {
+    "IQ_window": "/Users/adarshthakur/Desktop/A2G_Channel_Measurements/2023-12-15_16_42/Channel_Sounder_1702676587.315026.sigmf-data",
+    "timestamp": 1702676587.315026,
+    "receiver_position": {
+      "latitude": 35.72736740112305,
+      "longitude": -78.69623565673828,
+      "altitude": -0.46000000834465027
+    },
+    "transmitter_position": {
+      "latitude": 35.72747884,
+      "longitude": -78.69591754,
+      "altitude": 12
+    },
+    "range": 33.71171559004078,
+    "azimuth": 66.75106733301043,
+    "elevation": 21.691083963428344,
+    "radial_velocity": 0.007392043331618936,
+    "velocity_xyz": [
+      0.0,
+      0.0,
+      0.02
+    ],
+    "dataset_id": "19",
+    "flight_id": "2023-12-15_16_42",
+    "valid_masks": {
+      "range": true,
+      "azimuth": false,
+      "elevation": false,
+      "velocity": true
+    }
+  },
+  {
+    "IQ_window": "/Users/adarshthakur/Desktop/A2G_Channel_Measurements/2023-12-15_16_42/Channel_Sounder_1702676587.720106.sigmf-data",
+    "timestamp": 1702676587.720106,
+    "receiver_position": {
+      "latitude": 35.72736740112305,
+      "longitude": -78.69623565673828,
+      "altitude": -0.46399998664855957
+    },
+    "transmitter_position": {
+      "latitude": 35.72747884,
+      "longitude": -78.69591754,
+      "altitude": 12
+    },
+    "range": 33.71319419554053,
+    "azimuth": 66.75106733314627,
+    "elevation": 21.69740058638913,
+    "radial_velocity": 0.00739409207407595,
+    "velocity_xyz": [
+      0.0,
+      0.0,
+      0.02
+    ],
+    "dataset_id": "19",
+    "flight_id": "2023-12-15_16_42",
+    "valid_masks": {
+      "range": true,
+      "azimuth": false,
+      "elevation": false,
+      "velocity": true
+    }
+  },
+  {
+    "IQ_window": "/Users/adarshthakur/Desktop/A2G_Channel_Measurements/2023-12-15_16_42/Channel_Sounder_1702676588.12513.sigmf-data",
+    "timestamp": 1702676588.12513,
+    "receiver_position": {
+      "latitude": 35.72736740112305,
+      "longitude": -78.69623565673828,
+      "altitude": -0.4650000035762787
+    },
+    "transmitter_position": {
+      "latitude": 35.72747884,
+      "longitude": -78.69591754,
+      "altitude": 12
+    },
+    "range": 33.71356391937038,
+    "azimuth": 66.75106733241867,
+    "elevation": 21.69897969059672,
+    "radial_velocity": 0.007394604228935551,
+    "velocity_xyz": [
+      0.0,
+      0.0,
+      0.02
+    ],
+    "dataset_id": "19",
+    "flight_id": "2023-12-15_16_42",
+    "valid_masks": {
+      "range": true,
+      "azimuth": false,
+      "elevation": false,
+      "velocity": true
+    }
+  },
+  {
+    "IQ_window": "/Users/adarshthakur/Desktop/A2G_Channel_Measurements/2023-12-15_16_42/Channel_Sounder_1702676588.530248.sigmf-data",
+    "timestamp": 1702676588.530248,
+    "receiver_position": {
+      "latitude": 35.72736740112305,
+      "longitude": -78.69623565673828,
+      "altitude": -0.46799999475479126
+    },
+    "transmitter_position": {
+      "latitude": 35.72747884,
+      "longitude": -78.69591754,
+      "altitude": 12
+    },
+    "range": 33.71467322189456,
+    "azimuth": 66.75106733244353,
+    "elevation": 21.70371670184869,
+    "radial_velocity": 0.007396140562071213,
+    "velocity_xyz": [
+      0.0,
+      0.0,
+      0.02
+    ],
+    "dataset_id": "19",
+    "flight_id": "2023-12-15_16_42",
+    "valid_masks": {
+      "range": true,
+      "azimuth": false,
+      "elevation": false,
+      "velocity": true
+    }
+  },
+  {
+    "IQ_window": "/Users/adarshthakur/Desktop/A2G_Channel_Measurements/2023-12-15_16_19/Channel_Sounder_1702675200.876612.sigmf-data",
+    "timestamp": 1702675200.876612,
+    "receiver_position": {
+      "latitude": 35.72736740112305,
+      "longitude": -78.69623565673828,
+      "altitude": 0.1289999932050705
+    },
+    "transmitter_position": {
+      "latitude": 35.72747884,
+      "longitude": -78.69591754,
+      "altitude": 12
+    },
+    "range": 33.49849100404576,
+    "azimuth": 66.75106733291442,
+    "elevation": 20.754953064920922,
+    "radial_velocity": -0.00859172743591194,
+    "velocity_xyz": [
+      -0.01,
+      0.0,
+      0.0
+    ],
+    "dataset_id": "19",
+    "flight_id": "2023-12-15_16_19",
+    "valid_masks": {
+      "range": true,
+      "azimuth": false,
+      "elevation": false,
+      "velocity": true
+    }
+  },
+  {
+    "IQ_window": "/Users/adarshthakur/Desktop/A2G_Channel_Measurements/2023-12-15_16_19/Channel_Sounder_1702675201.281673.sigmf-data",
+    "timestamp": 1702675201.281673,
+    "receiver_position": {
+      "latitude": 35.72736740112305,
+      "longitude": -78.69623565673828,
+      "altitude": 0.13899999856948853
+    },
+    "transmitter_position": {
+      "latitude": 35.72747884,
+      "longitude": -78.69591754,
+      "altitude": 12
+    },
+    "range": 33.49494858886427,
+    "azimuth": 66.75106733286441,
+    "elevation": 20.738957347072557,
+    "radial_velocity": -0.008592636094326258,
+    "velocity_xyz": [
+      -0.01,
+      0.0,
+      0.0
+    ],
+    "dataset_id": "19",
+    "flight_id": "2023-12-15_16_19",
+    "valid_masks": {
+      "range": true,
+      "azimuth": false,
+      "elevation": false,
+      "velocity": true
+    }
+  },
+  {
+    "IQ_window": "/Users/adarshthakur/Desktop/A2G_Channel_Measurements/2023-12-15_16_19/Channel_Sounder_1702675201.686723.sigmf-data",
+    "timestamp": 1702675201.686723,
+    "receiver_position": {
+      "latitude": 35.72736740112305,
+      "longitude": -78.69623565673828,
+      "altitude": 0.14800000190734863
+    },
+    "transmitter_position": {
+      "latitude": 35.72747884,
+      "longitude": -78.69591754,
+      "altitude": 12
+    },
+    "range": 33.4917626478896,
+    "azimuth": 66.751067333314,
+    "elevation": 20.724558311766327,
+    "radial_velocity": -0.015824060476452337,
+    "velocity_xyz": [
+      -0.01,
+      -0.01,
+      -0.01
+    ],
+    "dataset_id": "19",
+    "flight_id": "2023-12-15_16_19",
+    "valid_masks": {
+      "range": true,
+      "azimuth": false,
+      "elevation": false,
+      "velocity": true
+    }
+  },
+  {
+    "IQ_window": "/Users/adarshthakur/Desktop/A2G_Channel_Measurements/2023-12-15_16_19/Channel_Sounder_1702675202.091794.sigmf-data",
+    "timestamp": 1702675202.091794,
+    "receiver_position": {
+      "latitude": 35.72736740112305,
+      "longitude": -78.69623565673828,
+      "altitude": 0.1509999930858612
+    },
+    "transmitter_position": {
+      "latitude": 35.72747884,
+      "longitude": -78.69591754,
+      "altitude": 12
+    },
+    "range": 33.49070114133133,
+    "azimuth": 66.75106733328913,
+    "elevation": 20.719758040379187,
+    "radial_velocity": -0.007229940407933528,
+    "velocity_xyz": [
+      0.0,
+      -0.01,
+      -0.01
+    ],
+    "dataset_id": "19",
+    "flight_id": "2023-12-15_16_19",
+    "valid_masks": {
+      "range": true,
+      "azimuth": false,
+      "elevation": false,
+      "velocity": true
+    }
+  },
+  {
+    "IQ_window": "/Users/adarshthakur/Desktop/A2G_Channel_Measurements/2023-12-15_16_19/Channel_Sounder_1702675202.496784.sigmf-data",
+    "timestamp": 1702675202.496784,
+    "receiver_position": {
+      "latitude": 35.72736740112305,
+      "longitude": -78.69623565673828,
+      "altitude": 0.1509999930858612
+    },
+    "transmitter_position": {
+      "latitude": 35.72747884,
+      "longitude": -78.69591754,
+      "altitude": 12
+    },
+    "range": 33.49070114133133,
+    "azimuth": 66.75106733328913,
+    "elevation": 20.719758040379187,
+    "radial_velocity": -0.007229940407933528,
+    "velocity_xyz": [
+      0.0,
+      -0.01,
+      -0.01
+    ],
+    "dataset_id": "19",
+    "flight_id": "2023-12-15_16_19",
+    "valid_masks": {
+      "range": true,
+      "azimuth": false,
+      "elevation": false,
+      "velocity": true
+    }
+  }
+]

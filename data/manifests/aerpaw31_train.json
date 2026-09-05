@@ -1,0 +1,137 @@
+[
+  {
+    "IQ_window": "a2a.sigmf-data:a2a-00000",
+    "timestamp": "2025-09-18T20:35:52.067578+00:00",
+    "receiver_position": {
+      "latitude": 35.72737885,
+      "longitude": -78.69748688,
+      "altitude": 46.20000076
+    },
+    "transmitter_position": {
+      "latitude": 35.7273686,
+      "longitude": -78.6974835,
+      "altitude": 65.86
+    },
+    "range": 19.70413971,
+    "azimuth": 164.94990451908205,
+    "elevation": 86.57192925760344,
+    "radial_velocity": null,
+    "velocity_xyz": null,
+    "dataset_id": "31",
+    "flight_id": "a2a_spherical",
+    "valid_masks": {
+      "range": true,
+      "azimuth": false,
+      "elevation": false,
+      "velocity": false
+    }
+  },
+  {
+    "IQ_window": "a2a.sigmf-data:a2a-00001",
+    "timestamp": "2025-09-18T20:35:52.167524+00:00",
+    "receiver_position": {
+      "latitude": 35.72738647,
+      "longitude": -78.69747925,
+      "altitude": 46.22999954
+    },
+    "transmitter_position": {
+      "latitude": 35.7273738,
+      "longitude": -78.6974858,
+      "altitude": 65.84
+    },
+    "range": 19.65773201,
+    "azimuth": 202.85746646292557,
+    "elevation": 85.55151685344515,
+    "radial_velocity": null,
+    "velocity_xyz": null,
+    "dataset_id": "31",
+    "flight_id": "a2a_spherical",
+    "valid_masks": {
+      "range": true,
+      "azimuth": false,
+      "elevation": false,
+      "velocity": false
+    }
+  },
+  {
+    "IQ_window": "a2a.sigmf-data:a2a-00002",
+    "timestamp": "2025-09-18T20:35:52.267535+00:00",
+    "receiver_position": {
+      "latitude": 35.72738266,
+      "longitude": -78.69748688,
+      "altitude": 46.24000168
+    },
+    "transmitter_position": {
+      "latitude": 35.7273689,
+      "longitude": -78.6974835,
+      "altitude": 65.86
+    },
+    "range": 19.67759132,
+    "azimuth": 168.67370582574884,
+    "elevation": 85.46244813140575,
+    "radial_velocity": null,
+    "velocity_xyz": null,
+    "dataset_id": "31",
+    "flight_id": "a2a_spherical",
+    "valid_masks": {
+      "range": true,
+      "azimuth": false,
+      "elevation": false,
+      "velocity": false
+    }
+  },
+  {
+    "IQ_window": "a2a.sigmf-data:a2a-00003",
+    "timestamp": "2025-09-18T20:35:52.367523+00:00",
+    "receiver_position": {
+      "latitude": 35.72739029,
+      "longitude": -78.69747925,
+      "altitude": 46.25999832
+    },
+    "transmitter_position": {
+      "latitude": 35.727374,
+      "longitude": -78.6974858,
+      "altitude": 65.84
+    },
+    "range": 19.65114784,
+    "azimuth": 198.1525582096544,
+    "elevation": 84.4513320954115,
+    "radial_velocity": null,
+    "velocity_xyz": null,
+    "dataset_id": "31",
+    "flight_id": "a2a_spherical",
+    "valid_masks": {
+      "range": true,
+      "azimuth": false,
+      "elevation": false,
+      "velocity": false
+    }
+  },
+  {
+    "IQ_window": "a2a.sigmf-data:a2a-00004",
+    "timestamp": "2025-09-18T20:35:52.767528+00:00",
+    "receiver_position": {
+      "latitude": 35.7273941,
+      "longitude": -78.69747925,
+      "altitude": 46.34000015
+    },
+    "transmitter_position": {
+      "latitude": 35.7273745,
+      "longitude": -78.6974857,
+      "altitude": 65.83
+    },
+    "range": 19.61382103,
+    "azimuth": 195.02070430658225,
+    "elevation": 83.40990937079368,
+    "radial_velocity": null,
+    "velocity_xyz": null,
+    "dataset_id": "31",
+    "flight_id": "a2a_spherical",
+    "valid_masks": {
+      "range": true,
+      "azimuth": false,
+      "elevation": false,
+      "velocity": false
+    }
+  }
+]
