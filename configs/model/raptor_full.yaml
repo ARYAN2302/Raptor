@@ -1,0 +1,11 @@
+model:
+  antennas: 4
+  d_model: 128
+  n_latent: 64
+  n_heads: 4
+  patch: 8
+  stride: 8
+  perceiver_layers: 2
+  temporal: mamba
+  n_queries: 4
+  probabilistic: true

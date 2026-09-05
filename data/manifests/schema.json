@@ -1,0 +1,11 @@
+{
+  "sample_id": "rfuav_DJI_00007_pack1_0",
+  "source_dataset": "rfuav",
+  "capture_id": "DJI FPV COMBO_pack1_0-1s",
+  "session_id": "00007",
+  "site_id": "00007",
+  "IQ": {"antenna_count": 1, "sample_count": 1000000, "dtype": "complex_float"},
+  "acquisition": {"sample_rate": 100000000, "center_frequency": 5760000000, "bandwidth": 100000000},
+  "sensor": {"antenna_positions": [[0,0,0]], "antenna_orientations": null, "receiver_pose": null},
+  "labels": {"emitter_count": 1, "emitters": [{"emitter_id": 0, "class": "DJI FPV COMBO", "range": null, "azimuth": null, "elevation": null, "velocity_xyz": null, "radial_velocity": null}]}
+}
