@@ -6,6 +6,7 @@ from .perceiver import PerceiverBottleneck
 from .temporal_recurrent import TemporalMamba as TemporalGRU
 from .temporal_mamba_ssm import TemporalMambaSSM
 from .set_decoder import SetDecoder
+from .recon_decoder import ReconDecoder
 class RAPTOR(nn.Module):
     def __init__(self, cfg):
         super().__init__()
@@ -17,20 +18,24 @@ class RAPTOR(nn.Module):
         if temporal=="mamba":
             self.temp=TemporalMambaSSM(d_model=m.get("d_model",64))
         else:
-            self.temp=TemporalGRU(d_model=m.get("d_model",64))  # gated recurrent baseline, not Mamba
+            self.temp=TemporalGRU(d_model=m.get("d_model",64))
         self.dec=SetDecoder(d_model=m.get("d_model",64), n_queries=m.get("n_queries",4), n_heads=m.get("n_heads",4), id_dim=32, n_classes=4)
+        self.recon_dec=ReconDecoder(d_model=m.get("d_model",64), n_heads=m.get("n_heads",4), n_layers=1)
     def forward(self, iq, antenna_positions=None, state=None):
-        t=self.tok(iq)
+        t=self.tok(iq, antenna_positions)
         t=self.arr(antenna_positions, t)
         z=self.perc(t)
         z, ns=self.temp(z, state)
         out=self.dec(z)
         out["latents"]=z; out["tokens"]=t
         return out, ns
-    def forward_recon(self, iq, mask_ratio=0.6):
-        t=self.tok(iq)
+    def forward_recon(self, iq, mask_ratio=0.6, antenna_positions=None):
+        t=self.tok(iq, antenna_positions)
+        if antenna_positions is not None:
+            t=self.arr(antenna_positions, t)
         B,L,D=t.shape
         mask=torch.rand(B,L, device=t.device)<mask_ratio
         tm=t.clone(); tm[mask]=0
         z=self.perc(tm)
-        return {"tokens": t, "latents": z, "mask": mask}
+        recon=self.recon_dec(z, tm, mask)
+        return {"tokens": t, "latents": z, "mask": mask, "recon": recon, "masked_tokens": tm}
