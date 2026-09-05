@@ -1,12 +1,19 @@
-"""Array geometry encoding §4.4 — element coords -> embeddings, consistent identity."""
+"""Array geometry encoding §4.4 — per-element explicit, E arbitrary."""
 import torch, torch.nn as nn
 class ArrayEncoder(nn.Module):
-    def __init__(self, d_model=128):
+    def __init__(self, d_model=64, hidden=64):
         super().__init__()
-        self.proj=nn.Linear(3, d_model)
+        self.mlp = nn.Sequential(nn.Linear(3, hidden), nn.GELU(), nn.Linear(hidden, d_model))
     def forward(self, antenna_positions, tokens):
-        # antenna_positions [B,E,3] -> [B,E,D] -> broadcast to tokens per antenna?
-        # Simple: add mean geometry emb to latents (full impl conditions cross-attn)
-        if antenna_positions is None: return tokens
-        geo=self.proj(antenna_positions).mean(dim=1, keepdim=True)  # [B,1,D]
-        return tokens+geo
+        # tokens [B, E*L, D] from tokenizer; antenna_positions [B,E,3] or None
+        if antenna_positions is None:
+            return tokens
+        B, EL, D = tokens.shape
+        E = antenna_positions.shape[1]
+        L = EL // E
+        # per-element geometry [B,E,D]
+        geo = self.mlp(antenna_positions)  # [B,E,D]
+        # broadcast to L tokens per element
+        geo_exp = geo.repeat_interleave(L, dim=1)  # [B, E*L, D] (repeats each element L times in order)
+        # tokenizer order is E*L with E major, L minor (reshape B,E,L,D -> B,E*L) so repeat_interleave matches
+        return tokens + geo_exp

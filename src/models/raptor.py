@@ -9,11 +9,11 @@ class RAPTOR(nn.Module):
     def __init__(self, cfg):
         super().__init__()
         m=cfg.get("model", cfg)
-        self.tok=ComplexIQTokenizer(in_antennas=m.get("antennas",1), patch=m.get("patch",8), stride=m.get("stride",8), d_model=m.get("d_model",64))
+        self.tok=ComplexIQTokenizer(patch=m.get("patch",8), stride=m.get("stride",8), d_model=m.get("d_model",64), max_antennas=m.get("antennas",4))
         self.arr=ArrayEncoder(d_model=m.get("d_model",64))
         self.perc=PerceiverBottleneck(d_model=m.get("d_model",64), n_latent=m.get("n_latent",32), n_heads=m.get("n_heads",4), n_layers=m.get("perceiver_layers",1))
-        self.temp=TemporalMamba(d_model=m.get("d_model",64), use_mamba=(m.get("temporal","")== "mamba"))
-        self.dec=SetDecoder(d_model=m.get("d_model",64), n_queries=m.get("n_queries",4), n_heads=m.get("n_heads",4))
+        self.temp=TemporalMamba(d_model=m.get("d_model",64))
+        self.dec=SetDecoder(d_model=m.get("d_model",64), n_queries=m.get("n_queries",4), n_heads=m.get("n_heads",4), id_dim=32, n_classes=4)
     def forward(self, iq, antenna_positions=None, state=None):
         t=self.tok(iq)
         t=self.arr(antenna_positions, t)
