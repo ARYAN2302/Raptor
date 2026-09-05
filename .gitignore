@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+data/raw/
+data/normalized/*.npy
+output/
+dist/
+build/
+.pytest_cache/
+*.parquet
+.DS_Store
+results/
+checkpoints/
+*.pt
+*.pth

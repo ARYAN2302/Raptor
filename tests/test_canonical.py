@@ -12,7 +12,7 @@ def test_canonical():
     q=normalize_iq(s.iq)
     assert q.shape==s.iq.shape
 def test_tokenizer():
-    tok=ComplexIQTokenizer(in_antennas=1,patch=8,stride=8,d_model=32)
+    tok=ComplexIQTokenizer(patch=8,stride=8,d_model=32,max_antennas=4)
     perc=PerceiverBottleneck(d_model=32,n_latent=8,n_heads=2,n_layers=1)
     s=synth_iq(T=4096,E=1,seed=1)
     iq=torch.from_numpy(s.iq).unsqueeze(0)

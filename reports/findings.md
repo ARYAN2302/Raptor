@@ -1,36 +1,37 @@
-# Findings — V2 §20H (Steps 12-19, small-slice evidence, not final metrics)
+# Findings — V2 §20H (small-slice evidence, honest)
 
 ## What works?
-- Full RAPTOR composition runs end-to-end on same code small/full: tokenizer (I/Q separate P=8) → array_encoder (coord proj) → Perceiver (M=32, O(MN)) → temporal_mamba streaming → set_decoder K=4 → probabilistic heads (μ/logvar) per §4, verified `scripts/train_raptor.py:1` 121k params.
-- Masked recon 60% CI on synthetic: pipeline stable (`modal_full.py:1` Stage B). On real RFUAV small slice leakage-safe 00007/00008 3905 windows: recon loss decreasing (smoke).
-- Leakage-safe splits by site_id/serial implemented per §15, validated `modal_gateA.py:1`.
+- Full RAPTOR composition same code small/full: tokenizer [B,T,E,2] I/Q separate per-antenna + ant identity + array_encoder per-element → Perceiver O(MN) M=8 NL=256 → temporal_mamba streaming state_t=F(state_{t-1},latent_t) (GRU, diff 0.05) → set_decoder K=4 + identity/logits → losses recon+Hungarian+NLL (89/94 grads ok).
+- Masked recon 60% CI stable (synthetic recon 0.93→0.024, real RFUAV cross-site 00007→00014 0.98→0.93 3905 windows).
+- Leakage-safe by site_id/serial validated (00007 train 3905 / 00008 val 3905).
 
 ## What does not?
-- Passive single-snapshot range: **447-506 m RMSE** on 50-1500 m uniform (Step12 `modal_step12.py:1` 256 samples, 3 epochs) — no better than prior (~430m). Confirms §3 observability and §16 hardest hypothesis: time-invariant single window insufficient.
-- Counting 0-2: predicts 4/4 for 0/1/2 (existence ~0.96) — dummy Hungarian not tuned, Gate B not passed. Shows counting is non-trivial, same-model separation not yet tested.
+- Passive single-snapshot range: **single 443.7 m vs temporal 401.6 m RMSE** on 50-1500m uniform (modal_range_temporal.py:1, 32 val, 2 epochs) — temporal helps 42m but still ~400m, confirms §16 hardest, §3 observability.
+- Counting 0-2: **0/3 acc** (exist 0.96 all) — dummy Hungarian, Gate B not passed.
+- Azimuth: **with geometry 94.5° vs without 99.8° RMSE** (modal_ablations.py:1, 32 val) — geometry helps 5.3°, still poor (~90° on 0-360 uniform ~103°), shows need for coherent multi-antenna + longer training.
 
 ## What is actually observable?
-- Phase / array geometry not yet ablated — array_encoder present but not measured. Expect azimuth/elevation tied to phase per §3, range requires temporal/Doppler (§16).
+- Phase/geometry matters for az (5° gain), range needs temporal/Doppler (§16 Exp 2-5) not yet sufficient.
 
-## What does temporal state buy us?
-- Mamba present `temporal_mamba.py:1` streaming state_t = F(state_{t-1}, latent_t), but ablation no-temporal vs Mamba not yet run with proper velocity/range metric (§14). Hypothesis remains unproven.
+## What does temporal buy us?
+- **42m range improvement** (443→401) with 4-window carry, but still far from usable — hypothesis unproven, needs longer context + Doppler-relevant Sionna scenes.
 
-## What does coherent array information buy us?
-- Not yet measured; array ablation pending (§14).
+## What does coherent array buy us?
+- **5.3° az gain** with explicit array_encoder per-element vs zero.
 
 ## Can we count emitters?
-- Not with current dummy loss — 0/3 acc. Needs proper Hungarian + existence BCE per §12.
+- Not yet — 0/3, needs proper existence BCE + Hungarian tuning per §12.
 
-## Can we separate same-model emitters?
-- Not yet tested; requires RFUAV serial-level same-model pairs per §11.
+## Can we separate same-model?
+- Not yet tested (needs RFUAV serial-level same-model pairs).
 
 ## Can we estimate physical state?
-- Azimuth/elevation not yet evaluated; range fails single frame.
+- Az degraded but geometry helps; range fails single frame.
 
-## How large is sim-to-real gap?
-- Not yet measured; Sionna generator `src/simulation/sionna_gen.py:1` produces exact GT but real labels (AERPAW-28 processed) not yet aligned per §7.
+## Sim-real gap?
+- Synthetic Sionna generator ready `src/simulation/sionna_gen.py:1` exact GT schema §8, but synthetic→real gap not yet numerically measured (real has no GT per §7).
 
-## Next bottleneck
-- Proper Hungarian + NLL training for range/az with periodic loss, and temporal ablation with Doppler-relevant Sionna scenes (§16 Exp 2-5). Scale one var at a time per §15.
+## Next bottleneck per §21
+- Proper Hungarian + periodic az + NLL + longer temporal (Sionna trajectories, varying SNR/array/environment) one var at a time §15.
 
-All experiments logged with git d87f7e9..9a0d67f, configs `raptor_full.yaml:1`, manifests `data/manifests/schema.json:1` per §19.
+Artefacts per §19: git 4c9aff5, configs raptor_full.yaml, manifests schema.json, seeds 0, params 127k-367k, ckpts /ckpt/*, Modal logs above.
