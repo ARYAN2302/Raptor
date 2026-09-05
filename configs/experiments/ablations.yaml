@@ -1,9 +1,0 @@
-# Paper-grade ablations §11
-toggles:
-  complex_iq: [true, false]  # remove phase -> magnitude
-  perceiver: [true, false]
-  temporal: [none, mamba]
-  array_geometry: [true, false]
-  set_decoder: [detr, single]
-  site_conditioning: [false]
-  synthetic_pretrain: [true, false]

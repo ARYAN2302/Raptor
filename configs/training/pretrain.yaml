@@ -1,8 +1,0 @@
-epochs: 3
-batch_size: 8
-lr: 0.0003
-window: 4096
-hop: 2048
-mask_ratio: 0.4
-dataset: synthetic
-n_synth: 512
