@@ -5,7 +5,7 @@ app = modal.App("raptor")
 
 image = modal.Image.debian_slim().pip_install(
     "torch==2.4.1", "numpy", "scipy", "h5py", "pyyaml", "tqdm", "einops", "scikit-learn"
-).add_local_dir(".", remote_path="/root/raptor")
+).add_local_dir("/tmp/raptor_build/Raptor", remote_path="/root/raptor")
 
 data_vol = modal.Volume.from_name("raptor-data", create_if_missing=True)
 ckpt_vol = modal.Volume.from_name("raptor-ckpt", create_if_missing=True)
