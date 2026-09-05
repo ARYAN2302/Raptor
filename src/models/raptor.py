@@ -3,7 +3,8 @@ import torch, torch.nn as nn
 from .iq_tokenizer import ComplexIQTokenizer
 from .array_encoder import ArrayEncoder
 from .perceiver import PerceiverBottleneck
-from .temporal_mamba import TemporalMamba
+from .temporal_recurrent import TemporalMamba as TemporalGRU
+from .temporal_mamba_ssm import TemporalMambaSSM
 from .set_decoder import SetDecoder
 class RAPTOR(nn.Module):
     def __init__(self, cfg):
@@ -12,7 +13,11 @@ class RAPTOR(nn.Module):
         self.tok=ComplexIQTokenizer(patch=m.get("patch",8), stride=m.get("stride",8), d_model=m.get("d_model",64), max_antennas=m.get("antennas",4))
         self.arr=ArrayEncoder(d_model=m.get("d_model",64))
         self.perc=PerceiverBottleneck(d_model=m.get("d_model",64), n_latent=m.get("n_latent",32), n_heads=m.get("n_heads",4), n_layers=m.get("perceiver_layers",1))
-        self.temp=TemporalMamba(d_model=m.get("d_model",64))
+        temporal = m.get("temporal","gru")
+        if temporal=="mamba":
+            self.temp=TemporalMambaSSM(d_model=m.get("d_model",64))
+        else:
+            self.temp=TemporalGRU(d_model=m.get("d_model",64))  # gated recurrent baseline, not Mamba
         self.dec=SetDecoder(d_model=m.get("d_model",64), n_queries=m.get("n_queries",4), n_heads=m.get("n_heads",4), id_dim=32, n_classes=4)
     def forward(self, iq, antenna_positions=None, state=None):
         t=self.tok(iq)
