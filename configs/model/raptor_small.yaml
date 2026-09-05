@@ -1,0 +1,8 @@
+model:
+  antennas: 1
+  d_model: 64
+  n_latent: 32
+  n_heads: 4
+  patch: 8
+  stride: 8
+  perceiver_layers: 1
