@@ -32,14 +32,17 @@ def pretrain(config: str = "configs/training/pretrain.yaml"):
     dl = DataLoader(ds, batch_size=cfg.get("batch_size",8), shuffle=True, collate_fn=collate)
     opt = torch.optim.AdamW(model.parameters(), lr=cfg.get("lr",0.0003))
     for epoch in range(cfg.get("epochs",3)):
-        for batch in dl:
+        total=0
+        for bi, batch in enumerate(dl):
             iq = batch["iq"]
             if torch.cuda.is_available(): iq=iq.cuda()
             out = model.forward_recon(iq, mask_ratio=cfg.get("mask_ratio",0.4))
             loss = (out["tokens"]**2).mean()
             opt.zero_grad(); loss.backward(); opt.step()
-            print(f"epoch {epoch} loss {loss.item():.4f}")
-            break
+            total+=loss.item()
+            if bi%20==0:
+                print(f"epoch {epoch} batch {bi}/{len(dl)} loss {loss.item():.4f} avg {total/(bi+1):.4f}")
+        print(f"epoch {epoch} DONE avg_loss {total/len(dl):.4f}")
     torch.save(model.state_dict(), "/ckpt/pretrain.pt")
     ckpt_vol.commit()
     print("saved /ckpt/pretrain.pt")
@@ -65,14 +68,23 @@ def train_state(config: str = "configs/training/state.yaml"):
     opt=torch.optim.AdamW(model.parameters(), lr=cfg.get("lr",0.0002))
     crit=SetPredictionLoss()
     for epoch in range(cfg.get("epochs",5)):
-        for batch in dl:
+        total=0
+        for bi, batch in enumerate(dl):
             iq=batch["iq"]
             if torch.cuda.is_available(): iq=iq.cuda()
             out=model(iq)
             loss=crit(out, batch["gt"])
             opt.zero_grad(); loss.backward(); opt.step()
-            print(f"epoch {epoch} loss {loss.item():.4f}")
-            break
+            total+=loss.item()
+            if bi%20==0:
+                print(f"epoch {epoch} batch {bi}/{len(dl)} loss {loss.item():.4f} avg {total/(bi+1):.4f} exist {out['existence'][0].tolist()[:2]}")
+        print(f"epoch {epoch} DONE avg_loss {total/len(dl):.4f}")
+        # quick range/az sanity on first batch
+        try:
+            gt=batch["gt"][0]
+            if gt:
+                print(f"  sample0 gt range {gt[0]['range']:.1f} az {gt[0]['azimuth']:.1f} pred range {out['range'][0][0].item():.1f} az {out['azimuth'][0][0].item():.1f}")
+        except: pass
     torch.save(model.state_dict(), "/ckpt/state.pt")
     ckpt_vol.commit()
     print("saved /ckpt/state.pt")
