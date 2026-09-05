@@ -1,0 +1,16 @@
+{
+  "dataset": "AERPAW Dataset 32",
+  "doi": "10.5061/dryad.2ngf1vj4r",
+  "files": [
+    {
+      "raw IQ file": "4 flights linear+zigzag at 60m, 3.4GHz, SigMF",
+      "sample_rate": 10000000,
+      "center_frequency": 3400000000,
+      "num_channels": 1,
+      "receiver_coords": "ground node lat/lon/alt",
+      "UAV_lat_lon_alt": "UAV lat/lon/alt + heading per capture",
+      "trajectory": "linear and zigzag per flight"
+    }
+  ],
+  "ground_truth": "3D position + heading, suitable for range/temporal/multipath support (§6D)"
+}

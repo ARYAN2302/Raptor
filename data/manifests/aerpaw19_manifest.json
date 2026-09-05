@@ -1,0 +1,22 @@
+{
+  "dataset": "AERPAW Dataset 19",
+  "doi": "10.5061/dryad.7h44j105p",
+  "files": [
+    {
+      "raw IQ file": "2023-12-15_15_41/Channel_Sounder_<unix>.sigmf-data (9 flights)",
+      "sample_rate": 56000000,
+      "center_frequency": 3500000000,
+      "num_channels": 1,
+      "channel_ordering": "single Zadoff-Chu 56MHz",
+      "receiver_coords": "fixed ground node Lake Wheeler, lat/lon/alt in core:rx_location per capture",
+      "UAV_lat_lon_alt": "core:tx_location per capture (lat,lon,alt)",
+      "UAV_heading": "core:rotation pitch/yaw/roll per capture",
+      "timestamps": "core:timestamp per capture (unix), velocity core:velocity X/Y/Z, flight_stage, speed/dist",
+      "sync": "Both ends synchronized with external clock and PPS per README — IQ and telemetry same capture timestamp",
+      "trajectory_id": "9 flights on different altitudes/frequencies",
+      "flight_id": "2023-12-15_* per timestamp folder"
+    }
+  ],
+  "size": "244 MB zip",
+  "ground_truth": "3D position + velocity per capture, suitable for range/az/el/velocity via Step2"
+}

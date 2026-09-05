@@ -1,0 +1,12 @@
+{
+  "range": 148.65022730655556,
+  "azimuth": 39.19381668702273,
+  "elevation": 15.609363793950013,
+  "velocity_xyz": [
+    -3.370281831394095e-10,
+    110.95639240803679,
+    -9.681609633105381e-05
+  ],
+  "radial_velocity": 82.82105881629514,
+  "coordinate_system": "ENU ref at receiver LW1, azimuth 0=North 90=East, elevation horizon=0"
+}

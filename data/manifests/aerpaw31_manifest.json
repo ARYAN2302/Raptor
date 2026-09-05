@@ -1,0 +1,18 @@
+{
+  "dataset": "AERPAW Dataset 31",
+  "doi": "10.5061/dryad.z34tmpgws",
+  "files": [
+    {
+      "raw IQ file": "SigMF air-to-air 3.4GHz, 2 UAVs (center+orbiter spherical)",
+      "sample_rate": 10000000,
+      "center_frequency": 3400000000,
+      "num_channels": 1,
+      "receiver_coords": "center UAV lat/lon/alt per capture",
+      "UAV_lat_lon_alt": "orbiter UAV lat/lon/alt + heading per capture",
+      "timestamps": "per SigMF capture, GNSSDO synchronized",
+      "trajectory": "spherical around center"
+    }
+  ],
+  "size": "unknown, SigMF",
+  "ground_truth": "relative 3D position suitable for range/az/el, but air-to-air not drone-comms localization per audit — use for motion/3D channel evidence (§6D)"
+}

@@ -1,0 +1,27 @@
+{
+  "dataset": "AERPAW Dataset 12",
+  "doi": "10.5061/dryad.2z34tmpvv",
+  "link": "https://datadryad.org/dataset/doi:10.5061/dryad.2z34tmpvv",
+  "files": [
+    {
+      "raw IQ file": "40m_fs5MHz/LW1/results_3320000000_5000000_2024_07_15_12_26_01_248.sigmf-data",
+      "sample_rate": 5000000,
+      "center_frequency": 3320000000,
+      "num_channels": 2,
+      "channel_ordering": "interleaved IQ per B210 dual-channel, SigMF core:datatype=cf32_le, 20ms every 100ms",
+      "receiver_coords": "LW1-LW5 fixed nodes Lake Wheeler, coords in LW1-5_locations.txt (lat/lon/alt, not yet parsed)",
+      "UAV_lat_lon_alt": "GPSx,GPSy,GPSz per second in gps_data.sigmf-data, plus interpolated mX,mY,mZ per radio measurement in measurement_rss_data.sigmf-data",
+      "UAV_heading": "not explicitly in dataset 12, orientation not provided (unlike dataset 19 which has rotation)",
+      "timestamps_IQ": "SigMF capture core:datetime per 20ms chunk, results_<freq>_<sr>_<timestamp>.sigmf-meta",
+      "timestamps_telemetry": "gps_data 1Hz, measurement_rss_data per radio measurement, example.py interpolates GPS to radio via timestamps to mX,mY,mZ",
+      "sync_info": "IQ and telemetry time-stamped separately, example.py interpolates GPS to radio timestamps; B210 dual-channel 2 channels per file, 20ms/100ms duty, sample_rate 5/10/20MHz, bandwidth 1.25/2.5/5MHz per README; coherence: B210 shares LO but not calibrated phase-coherent — do NOT assume relative phase usable for AoA without external clock/PPS (unlike dataset 19 which uses GNSSDO)",
+      "trajectory_id": "40m_fs5MHz, 40m_fs10MHz, 40m_fs20MHz, 70m_fs20MHz, 100m_fs20MHz per altitude/bandwidth",
+      "flight_id": "LW1-LW5 per fixed node",
+      "coherence_verified": false,
+      "note": "B210 dual-channel coherence NOT verified — treat as two independent channels, not phase-coherent array until SigMF hw_info and calibration checked via actual file"
+    }
+  ],
+  "size": "150.84 GB zip, 5 altitudes×3 bandwidths×5 nodes SigMF",
+  "license": "CC0 via Dryad",
+  "ground_truth_available": "UAV lat/lon/alt via GPS, RSS, no explicit range/az/el/velocity — must compute from receiver coords + UAV pos per Step2"
+}
