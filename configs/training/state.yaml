@@ -1,0 +1,8 @@
+epochs: 5
+batch_size: 16
+lr: 0.0002
+window: 4096
+n_queries: 4
+dataset: synthetic
+n_synth: 1024
+max_emitters: 3

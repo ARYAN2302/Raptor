@@ -1,0 +1,7 @@
+name: rfuav
+root: /data/rfuav
+sample_rate: 100000000
+center_frequency: 5760000000.0
+max_files: 8
+window: 4096
+hop: 2048

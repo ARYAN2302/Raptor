@@ -1,0 +1,10 @@
+model:
+  antennas: 1  # RFUAV single-antenna; synthetic uses 4 via override
+  d_model: 128
+  n_latent: 32
+  n_heads: 4
+  perceiver_layers: 2
+  n_queries: 4
+  patch: 64
+  stride: 32
+  use_mamba: false
