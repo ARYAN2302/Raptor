@@ -8,7 +8,7 @@ class ComplexIQTokenizer(nn.Module):
         self.proj_I = nn.Conv1d(1, d_model//2, kernel_size=patch, stride=stride, padding=0)
         self.proj_Q = nn.Conv1d(1, d_model//2, kernel_size=patch, stride=stride, padding=0)
         self.norm = nn.LayerNorm(d_model)
-        self.pos = nn.Parameter(torch.randn(1,2048,d_model)*0.02)
+        self.pos = nn.Parameter(torch.randn(1,16384,d_model)*0.02)
         self.ant_emb = nn.Parameter(torch.randn(1,max_antennas,1,d_model)*0.02)
     def forward(self, iq, antenna_positions=None):
         # iq [B,T,E,2] -> preserves E
